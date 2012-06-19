@@ -27,34 +27,34 @@ elif pclass == "2":
 elif pclass == "3":
 	player = Player(name, "Mage", "Fireball", 100, 100, 10)
 
-print "Welcome %s" % player.getplrclass
+print "Welcome %s" % player.plrclass
 
 def userattack():
-	hp = mob.getmobHP()
-	dam = player.getplayerDP()
+	hp = mob.mobHP
+	dam = player.plrDP
 	newhp = hp - dam
-	mob.setmobHP(newhp)
-	print "You deal %r points of damage" % player.getplayerDP()
-	print "%s: %r/%r" % (mob.getmobname(), mob.getmobHP(), mob.getmobmaxHP())
+	mob.mobHP = newhp
+	print "You deal %r points of damage" % player.plrDP
+	print "%s: %r/%r" % (mob.mobname, mob.mobHP, mob.mobmaxHP)
 	return
 
 def mobattack():
-	hp = player.getplayerHP()
-	dam = mob.getmobDP()
+	hp = player.plrHP
+	dam = mob.mobDP
 	newhp = hp - dam
-	player.setplayerHP(newhp)
-	print "%s deals %r points of damage" % (mob.getmobname(), mob.getmobDP())
-	print "%s: %r/%r" % (player.getplayername(), player.getplayerHP(), player.getplayermaxHP())
+	player.plrHP = newhp
+	print "%s deals %r points of damage" % (mob.mobname, mob.mobDP)
+	print "%s: %r/%r" % (player.plrname, player.plrHP, player.plrmaxHP)
 	return
 	
 def battle():
 
-	while mob.getmobHP() > 0:
-		if player.isalive(mob.getmobname()) == False:
+	while mob.mobHP > 0:
+		if player.isalive(mob.mobname) == False:
 			sys.exit()
 		print "How will you attack?"
 		print "1. Bassic Attack"
-		print "2. %s" % player.getplrpower()
+		print "2. %s" % player.plrpower
 		print "3. Item"
 		print "4. Quit"
 
@@ -73,7 +73,7 @@ def battle():
 	return True
 
 mob = Mob("Large Rat", 60, 60, 30)
-print "You enter the dark cave then a large %s goes to attack you" % mob.getmobname()
+print "You enter the dark cave then a large %s goes to attack you" % mob.mobname
 win = False
 while win == False:	
 	win = battle()
