@@ -13,25 +13,21 @@ print "largest collection of tresuse hiden away by a long dead king and"
 print "protected by evil monsters, so good luck :D"
 
 print "Choose you class:"
-print "1. Warrior: Power = Furry"
-print "2. Thief: Power = Poison"
-print "3. Mage: Power = Fireball"
+print "1. Warrior: Power = Rage"
+print "2. Thief:   Power = Poison"
+print "3. Mage:    Power = Fireball"
 
 pclass = raw_input(">")
 
 if pclass == "1":
 	#make the player setting the name, hp, dp depending on the class
-	player = Player(name, "Warrior", "Furry", 300, 300, 10)
+	player = Player(name, "Warrior", "Rage", 300, 300, 20)
 elif pclass == "2":
-	pclass = "thief"
-	classpower = "poison"
-	playerhp = Player(200)
+	player = Player(name, "Thief", "Poison", 200, 200, 10)
 elif pclass == "3":
-	pclass = "mage"
-	classpower = "fireball"
-	playerhp = Player(150)
+	player = Player(name, "Mage", "Fireball", 100, 100, 10)
 
-print "Welcome %s" % pclass
+print "Welcome %s" % player.getplrclass
 
 def userattack():
 	hp = mob.getmobHP()
@@ -76,7 +72,7 @@ def battle():
 			sys.exit()
 	return True
 
-mob = Mob("Large Rat", 60, 60, 40)
+mob = Mob("Large Rat", 60, 60, 30)
 print "You enter the dark cave then a large %s goes to attack you" % mob.getmobname()
 win = False
 while win == False:	

@@ -1,7 +1,9 @@
 class Player(object):
 	
 	#set up a players stats
+##	add level, defence level, endurence
 	def __init__(self, name, plrclass, power, maxHP, HP, DP):
+		self.lvl = 1
 		self.name = name
 		self.plrclass = plrclass
 		self.power = power
@@ -42,7 +44,7 @@ class Player(object):
 		return self.DP
 	
 	#sets the damge of the player
-#	in furture this will be calcalated from stats
+##	in furture this will be calcalated from stats
 	def setplayerDP(self, newDP):
 		self.DP = newDP
 	
