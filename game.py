@@ -17,64 +17,64 @@ print "1. Warrior: Power = Rage"
 print "2. Thief:   Power = Poison"
 print "3. Mage:    Power = Fireball"
 
-pclass = raw_input(">")
+plr_class = raw_input(">")
 
-if pclass == "1":
+if plr_class == "1":
 	#make the player setting the name, hp, dp depending on the class
-	player = Player(name, "Warrior", "Rage", 300, 300, 20)
-elif pclass == "2":
-	player = Player(name, "Thief", "Poison", 200, 200, 10)
-elif pclass == "3":
-	player = Player(name, "Mage", "Fireball", 100, 100, 10)
+	player = Player(1, name, "Warrior", "Rage", 300, 300, 20)
+elif plr_class == "2":
+	player = Player(1, name, "Thief", "Poison", 200, 200, 10)
+elif plr_class == "3":
+	player = Player(1, name, "Mage", "Fireball", 100, 100, 10)
 
-print "Welcome %s" % player.plrclass
+print "Welcome %s" % player.plr_class
 
-def userattack():
-	hp = mob.mobHP
-	dam = player.plrDP
-	newhp = hp - dam
-	mob.mobHP = newhp
-	print "You deal %r points of damage" % player.plrDP
-	print "%s: %r/%r" % (mob.mobname, mob.mobHP, mob.mobmaxHP)
+def user_attack():
+	hp = mob.mob_HP
+	dam = player.plr_DP
+	new_hp = hp - dam
+	mob.mob_HP = new_hp
+	print "You deal %r points of damage" % player.plr_DP
+	print "Level %r %s: %r/%r\n" % (mob.mob_lvl, mob.mob_name, mob.mob_HP, mob.mob_maxHP)
 	return
 
-def mobattack():
-	hp = player.plrHP
-	dam = mob.mobDP
-	newhp = hp - dam
-	player.plrHP = newhp
-	print "%s deals %r points of damage" % (mob.mobname, mob.mobDP)
-	print "%s: %r/%r" % (player.plrname, player.plrHP, player.plrmaxHP)
+def mob_attack():
+	hp = player.plr_HP
+	dam = mob.mob_DP
+	new_hp = hp - dam
+	player.plr_HP = new_hp
+	print "\n%s deals %r points of damage" % (mob.mob_name, mob.mob_DP)
+	print "Level %r %s: %r/%r\n" % (player.plr_lvl, player.plr_name, player.plr_HP, player.plr_maxHP)
 	return
 	
 def battle():
 
-	while mob.mobHP > 0:
-		if player.isalive(mob.mobname) == False:
+	while mob.mob_HP > 0:
+		if player.isalive(mob.mob_name) == False:
 			sys.exit()
 		print "How will you attack?"
-		print "1. Bassic Attack"
-		print "2. %s" % player.plrpower
+		print "1. Basic Attack"
+		print "2. %s" % player.plr_power
 		print "3. Item"
 		print "4. Quit"
 
-		aplayer = raw_input(">")
+		att_player = raw_input(">")
 		
-		if aplayer == "1":
-			mobattack()
-			userattack()
-		elif aplayer == "2":
+		if att_player == "1":
+			mob_attack()
+			user_attack()
+		elif att_player == "2":
 			print "Coming Soon"
-		elif aplayer == "3":
+		elif att_player == "3":
 			print "Coming Soon"
-		elif aplayer == "4":
+		elif att_player == "4":
 			print "You coward!!!"
 			sys.exit()
 	return True
 
-mob = Mob("Large Rat", 60, 60, 30)
-print "You enter the dark cave then a large %s goes to attack you" % mob.mobname
+mob = Mob(1, "Large Rat", 60, 60, 30)
+print "You enter the dark cave then a %s goes to attack you" % mob.mob_name
 win = False
 while win == False:	
 	win = battle()
-print "You beat the rat and won the tresure"
+print "You beat the %s and won the tresure" % mob.mob_name

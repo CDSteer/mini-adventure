@@ -1,18 +1,18 @@
 class Player(object):
 	#set up a players stats
 ##	add level, defence level, endurence
-	def __init__(self, name, plrclass, power, maxHP, HP, DP):
-		self.plrlvl = 1
-		self.plrname = name
-		self.plrclass = plrclass
-		self.plrpower = power
-		self.plrmaxHP = maxHP
-		self.plrHP = HP
+	def __init__(self, lvl, name, plr_class, power, max_HP, HP, DP):
+		self.plr_lvl = lvl
+		self.plr_name = name
+		self.plr_class = plr_class
+		self.plr_power = power
+		self.plr_maxHP = max_HP
+		self.plr_HP = HP
 ##	in furture this will be calcalated from stats
-		self.plrDP = DP
+		self.plr_DP = DP
 	
 	def isalive(self, mob):
-		if self.plrHP <= 0:
+		if self.plr_HP <= 0:
 			print "Game Over the %s brutaly murdereds you!" % mob
 			return False
 		else:
