@@ -13,6 +13,17 @@ def user_attack():
 	mob.mob_HP = new_hp
 	print "You deal %r points of damage" % player.plr_att
 	print "Level %r %s: %r/%r\n" % (mob.mob_lvl, mob.mob_name, mob.mob_HP, mob.mob_maxHP)
+	if mob.poison:
+		power.power_time + 1
+		hp = mob.mob_HP
+		dam = power.power_damage
+		new_hp = hp - dam
+		mob.mob_HP = new_hp
+		print "%s is hurt by poison %r points of damage done" % (mob.mob_name, player.plr_att)
+		print "Level %r %s: %r/%r\n" % (mob.mob_lvl, mob.mob_name, mob.mob_HP, mob.mob_maxHP)
+		if power.power_time == 3:
+			mob.poison = False
+			power.power_time = 0
 	return
 
 def mob_attack():
@@ -27,6 +38,8 @@ def mob_attack():
 	return
 	
 def player_power():
+	if player.plr_class == "Rouge":
+		mob.poison = True
 	hp = mob.mob_HP
 	dam = power.power_damage
 	new_hp = hp - dam
@@ -58,13 +71,13 @@ plr_class = raw_input(">")
 if plr_class == "1":
 	"""make the player setting the name, hp, dp depending on the class"""
 	player = Player(1, name, "Warrior", "Rage", 300, 20, 30, 10)
-	power = Rage()
+	power = Rage(player.plr_att)
 elif plr_class == "2":
 	player = Player(1, name, "Rouge", "Poison", 200, 30, 20, 20)
-	power = Poison()
+	power = Poison(player.plr_att)
 elif plr_class == "3":
 	player = Player(1, name, "Mage", "Fireball", 100, 10, 10, 30)
-	power = Fireball()
+	power = Fireball(player.plr_att)
 
 print "Welcome %s" % player.plr_class
 	
@@ -85,6 +98,7 @@ def battle():
 		elif att_player == "2":
 			if player.plr_AP >= power.power_cost: 
 				player_power()
+				mob_attack()
 			else:
 				print "\nNot Enough Action Points\n"
 		elif att_player == "3":
