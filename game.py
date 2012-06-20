@@ -34,7 +34,7 @@ def mob_attack():
 	print "\n%s deals %r points of damage" % (mob.mob_name, mob.mob_att)
 	if player.isalive(mob.mob_name) == False:
 			sys.exit()
-	print "Level %r %s: %r/%r" % (player.plr_lvl, player.plr_name, player.plr_HP, player.plr_maxHP)
+	print "Level %r %s: %r/%r\n" % (player.plr_lvl, player.plr_name, player.plr_HP, player.plr_maxHP)
 	return
 	
 def player_power():
@@ -44,13 +44,13 @@ def player_power():
 	dam = power.power_damage
 	new_hp = hp - dam
 	mob.mob_HP = new_hp
-	print "\n%s deals %r points of damage" % (player.plr_power, dam)
+	print "%s deals %r points of damage" % (player.plr_power, dam)
 	print "Level %r %s: %r/%r\n" % (mob.mob_lvl, mob.mob_name, mob.mob_HP, mob.mob_maxHP)
 	cost = power.power_cost
 	ap = player.plr_AP
 	new_ap = ap - cost
 	player.plr_AP = new_ap
-	print "Level %r %s: Action Points: %r/%r" % (player.plr_lvl, player.plr_name, player.plr_AP, player.plr_maxAP)
+	print "Level %r %s: Action Points: %r/%r\n" % (player.plr_lvl, player.plr_name, player.plr_AP, player.plr_maxAP)
 	return
 	
 print "Welcome Player, start by entering your name:"
@@ -84,7 +84,7 @@ print "Welcome %s" % player.plr_class
 def battle():
 
 	while mob.mob_HP > 0:
-		print "\nHow will you attack?"
+		print "%s, How will you attack?" % player.plr_name
 		print "1. Basic Attack"
 		print "2. %s Action Points: %r/%r" % (player.plr_power, player.plr_AP, player.plr_maxAP)
 		print "3. Item"
@@ -100,7 +100,7 @@ def battle():
 				player_power()
 				mob_attack()
 			else:
-				print "\nNot Enough Action Points\n"
+				print "Not Enough Action Points\n"
 		elif att_player == "3":
 			print "Coming Soon"
 		elif att_player == "4":
@@ -109,8 +109,8 @@ def battle():
 	return True
 
 mob = Mob(1, "Large Rat", 60, 30, 10, 0)
-print "You enter the dark cave then a %s goes to attack you" % mob.mob_name
+print "You enter the dark cave then a %s goes to attack you:" % mob.mob_name
 win = False
 while win == False:	
 	win = battle()
-print "You beat the %s and won the tresure" % mob.mob_name
+print "You beat the %s and won the tresure. Yay!" % mob.mob_name
