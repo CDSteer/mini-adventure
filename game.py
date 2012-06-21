@@ -38,7 +38,7 @@ def mob_attack():
 	return
 	
 def player_power():
-	if player.plr_class == "Rouge":
+	if player.plr_class == "Rogue":
 		mob.poison = True
 	hp = mob.mob_HP
 	dam = power.power_damage
@@ -63,7 +63,7 @@ print "protected by evil monsters, so good luck :D"
 
 print "Choose you class:"
 print "1. Warrior: Power = Rage"
-print "2. Rouge:   Power = Poison"
+print "2. Rogue:   Power = Poison"
 print "3. Mage:    Power = Fireball"
 
 plr_class = raw_input(">")
@@ -73,7 +73,7 @@ if plr_class == "1":
 	player = Player(1, name, "Warrior", "Rage", 300, 20, 30, 10)
 	power = Rage(player.plr_att)
 elif plr_class == "2":
-	player = Player(1, name, "Rouge", "Poison", 200, 30, 20, 20)
+	player = Player(1, name, "Rogue", "Poison", 200, 30, 20, 20)
 	power = Poison(player.plr_att)
 elif plr_class == "3":
 	player = Player(1, name, "Mage", "Fireball", 100, 10, 10, 30)
