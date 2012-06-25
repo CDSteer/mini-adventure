@@ -6,6 +6,33 @@ from mob import *
 import powers
 from powers import *
 
+"""runs the ballte options intill quit is selected or the mob or player is dead"""
+def battle():
+	while mob.is_alive() == True:
+		print "%s, How will you attack?" % player.plr_name
+		print "1. Basic Attack"
+		print "2. %s Action Points: %r/%r" % (player.plr_power, player.plr_AP, player.plr_maxAP)
+		print "3. Item"
+		print "4. Quit"
+
+		att_player = raw_input(">")
+		
+		if att_player == "1":
+			mob_attack()
+			user_attack()
+		elif att_player == "2":
+			if player.plr_AP >= power.power_cost: 
+				player_power()
+				mob_attack()
+			else:
+				print "Not Enough Action Points\n"
+		elif att_player == "3":
+			print "Coming Soon"
+		elif att_player == "4":
+			print "You coward!!!"
+			sys.exit()
+	return True
+
 def user_attack():
 	hp = mob.mob_HP
 	dam = player.plr_att
@@ -52,7 +79,8 @@ def player_power():
 	player.plr_AP = new_ap
 	print "Level %r %s: Action Points: %r/%r\n" % (player.plr_lvl, player.plr_name, player.plr_AP, player.plr_maxAP)
 	return
-	
+
+"""Game Starts here"""	
 print "Welcome Player, start by entering your name:"
 name = raw_input(">")
 print "Hello there %s, \nYou are about to enter a cave of no return." % name
@@ -67,9 +95,8 @@ print "2. Rogue:   Power = Poison"
 print "3. Mage:    Power = Fireball"
 
 plr_class = raw_input(">")
-
+"""Set up the player depending on the class"""
 if plr_class == "1":
-	"""make the player setting the name, hp, dp depending on the class"""
 	player = Player(1, name, "Warrior", "Rage", 300, 20, 30, 10)
 	power = Rage(player.plr_att)
 elif plr_class == "2":
@@ -79,34 +106,7 @@ elif plr_class == "3":
 	player = Player(1, name, "Mage", "Fireball", 100, 10, 10, 30)
 	power = Fireball(player.plr_att)
 
-print "Welcome %s" % player.plr_class
-	
-def battle():
-
-	while mob.mob_HP > 0:
-		print "%s, How will you attack?" % player.plr_name
-		print "1. Basic Attack"
-		print "2. %s Action Points: %r/%r" % (player.plr_power, player.plr_AP, player.plr_maxAP)
-		print "3. Item"
-		print "4. Quit"
-
-		att_player = raw_input(">")
-		
-		if att_player == "1":
-			mob_attack()
-			user_attack()
-		elif att_player == "2":
-			if player.plr_AP >= power.power_cost: 
-				player_power()
-				mob_attack()
-			else:
-				print "Not Enough Action Points\n"
-		elif att_player == "3":
-			print "Coming Soon"
-		elif att_player == "4":
-			print "You coward!!!"
-			sys.exit()
-	return True
+print "Welcome %s the %s" % (player.plr_name, player.plr_class)
 
 mob = Mob(1, "Large Rat", 60, 30, 10, 0)
 print "You enter the dark cave then a %s goes to attack you:" % mob.mob_name

@@ -10,3 +10,10 @@ class Mob(object):
 		self.mob_endu = mob_endu
 		self.poison = False
 		self.rage = False
+	
+	"""checks if the mob is still alive, retuens true for alive and false for dead"""
+	def is_alive(self):
+		if self.mob_HP <= 0:
+			return False
+		else:
+			return True
