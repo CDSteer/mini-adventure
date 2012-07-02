@@ -1,19 +1,25 @@
-This is a simple text adventure made using python.
+<h1>Mini-Adventure</h1>
 
-Its very simple to use just follow the on screen instructions.
+<p>This is a simple text adventure made using python.</p>
 
-*Future tasks*
+<p>Its very simple to use just follow the on screen instructions.</p>
 
-Add effects and cool-downs for the class powers
-	
-	- Rage next attack does x2 damage
-	- Poison enemy's defence is weekend or takes extra damage 		  each turn
-	- Fire ball a single high powered attack  
+<h2>Future tasks</h2>
 
-Add new enemy's, next goblin
+<ol><li>Add new enemy's, next goblin
+</li></ol>
+<ol><li>, next goblin
 
-Add items eg. Health Potion
+2. Add items
+</li></ol>
+<ol><li>Health Potion
 
-Use level, and attack to work out damage. Then knock down for the defence.
+3. Use level, and attack to work out damage. Then knock dow
+</li></ol>
+<ol><li> the defence.
 
-Use endurance stat to work out the cool-downs  
+4. Add a bag for pl
+</li></ol>
+<ol><li>to hold items
+
+5. Add random items drops for when a en</li></ol>
