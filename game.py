@@ -6,6 +6,9 @@ from mob import *
 import powers
 from powers import *
 
+player = Player()
+mob = Mob()
+
 """runs the ballte options intill quit is selected or the mob or player is dead"""
 def battle():
 	while mob.is_alive() == True:
@@ -31,6 +34,7 @@ def battle():
 		elif att_player == "4":
 			print "You coward!!!"
 			sys.exit()
+	player.xp_check(mob.mob_expValue)
 	return True
 
 def user_attack():
@@ -40,6 +44,8 @@ def user_attack():
 	mob.mob_HP = new_hp
 	print "You deal %r points of damage" % player.plr_att
 	print "Level %r %s: %r/%r\n" % (mob.mob_lvl, mob.mob_name, mob.mob_HP, mob.mob_maxHP)
+	if mob.is_alive() == True:
+		return
 	if mob.poison:
 		power.power_time + 1
 		hp = mob.mob_HP
@@ -60,7 +66,7 @@ def mob_attack():
 	player.plr_HP = new_hp
 	print "\n%s deals %r points of damage" % (mob.mob_name, mob.mob_att)
 	if player.isalive(mob.mob_name) == False:
-			sys.exit()
+		sys.exit()
 	print "Level %r %s: %r/%r\n" % (player.plr_lvl, player.plr_name, player.plr_HP, player.plr_maxHP)
 	return
 	
@@ -97,19 +103,25 @@ print "3. Mage:    Power = Fireball"
 plr_class = raw_input(">")
 """Set up the player depending on the class"""
 if plr_class == "1":
-	player = Player(1, name, "Warrior", "Rage", 300, 20, 30, 10)
+	player.make_warrior(name)
 	power = Rage(player.plr_att)
 elif plr_class == "2":
-	player = Player(1, name, "Rogue", "Poison", 200, 30, 20, 20)
+	player.make_rogue(name)
 	power = Poison(player.plr_att)
 elif plr_class == "3":
-	player = Player(1, name, "Mage", "Fireball", 100, 10, 10, 30)
+	player.make_mage(name)
 	power = Fireball(player.plr_att)
+	
 
 print "Welcome %s the %s" % (player.plr_name, player.plr_class)
 
-mob = Mob(1, "Large Rat", 60, 30, 10, 0)
+mob.make_mob(player.plr_lvl)
 print "You enter the dark cave then a %s goes to attack you:" % mob.mob_name
+win = False
+while win == False:	
+	win = battle()
+mob.make_mob(player.plr_lvl)
+print "You continue on through the dark cave when a %s goes to attack you:" % mob.mob_name
 win = False
 while win == False:	
 	win = battle()

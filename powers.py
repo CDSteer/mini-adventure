@@ -1,8 +1,3 @@
-import player
-from player import * 
-import mob
-from mob import * 
-
 class Rage(object):
 	def __init__(self, att):
 		self.power_damage =  att * 2
@@ -20,3 +15,4 @@ class Fireball(object):
 		self.power_damage = 20
 		self.power_cost = 40
 		self.power_time = 0
+
