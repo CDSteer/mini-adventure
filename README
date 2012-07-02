@@ -1,25 +1,17 @@
-<h1>Mini-Adventure</h1>
+# Mini-Adventure
 
-<p>This is a simple text adventure made using python.</p>
+This is a simple text adventure made using python.
 
-<p>Its very simple to use just follow the on screen instructions.</p>
+Its very simple to use just follow the on screen instructions.
 
-<h2>Future tasks</h2>
+## Future tasks
 
-<ol><li>Add new enemy's, next goblin
-</li></ol>
-<ol><li>, next goblin
+1. Add new enemy's, next goblin
 
-2. Add items
-</li></ol>
-<ol><li>Health Potion
+2. Add items eg. Health Potion
 
-3. Use level, and attack to work out damage. Then knock dow
-</li></ol>
-<ol><li> the defence.
+3. Use level, and attack to work out damage. Then knock down for the defence.
 
-4. Add a bag for pl
-</li></ol>
-<ol><li>to hold items
+4. Add a bag for player to hold items
 
-5. Add random items drops for when a en</li></ol>
+5. Add random items drops for when a enemy is defeated
