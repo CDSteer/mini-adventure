@@ -1,6 +1,8 @@
 import powers
 from powers import *
 
+power = Power()
+
 class Player(object):
 	"""set up a players stats"""
 	def __init__(self):
@@ -30,7 +32,7 @@ class Player(object):
 		self.plr_att = 20
 		self.plr_def = 30
 		self.plr_endu = 10
-		power = Rage(self.plr_att)
+		power.set_rage(self.plr_att)
 		max_AP = self.plr_endu * 2
 		self.plr_maxAP = max_AP
 		self.plr_AP = max_AP
@@ -45,7 +47,7 @@ class Player(object):
 		self.plr_att = 30
 		self.plr_def = 20
 		self.plr_endu = 20
-		power = Poison(self.plr_att)
+		power.set_poison(self.plr_att)
 		max_AP = self.plr_endu * 2
 		self.plr_maxAP = max_AP
 		self.plr_AP = max_AP
@@ -60,18 +62,69 @@ class Player(object):
 		self.plr_att = 10
 		self.plr_def = 10
 		self.plr_endu = 30
-		power = Fireball(self.plr_att)
+		power.set_fireball(self.plr_att)
 		max_AP = self.plr_endu * 2
 		self.plr_maxAP = max_AP
 		self.plr_AP = max_AP	
 	
 	"""check it the player is still alive retuen true for alive and false for dead"""
-	def isalive(self, mob):
+	def isalive(self):
 		if self.plr_HP <= 0:
-			print "Game Over the %s brutaly murdereds you!" % mob
+			self.print_HP()
+			print "Game Over you were brutally murdered!"
 			return False
 		else:
 			return True
+	
+	def power_use(self):
+		print "%s uses %s" % (self.plr_name, self.plr_power)
+		return power.power_damage
+	
+	def poison_damage(self, mob):
+		if power.power_time == 3:
+			mob.poison = False
+			power.power_time = 0
+			print "%s is no longer poisoned" %  mob
+	
+		print "%s is hurt by poison" % (mob)
+		power.power_time + 1
+		
+		return power.power_damage
+	
+	def player_damage(self):
+		dam = self.plr_att * 2
+		return dam
+	
+	def player_defence(self, mob_dam):
+		dam = mob_dam / self.plr_def
+		return dam
+		
+	def damage_player(self, dam, mob):
+		self.plr_HP = self.plr_HP - dam
+		print "\n%s's attack deals %r points of damage" % (mob, dam)
+		return
+		
+	def print_HP(self):
+		print "Level %r %s: %r/%r\n" % (self.plr_lvl, self.plr_name, self.plr_HP, self.plr_maxHP)
+		return
+	
+	def print_AP(self):
+		print "2. %s Action Points: %r/%r" % (self.plr_power, self.plr_AP, self.plr_maxAP)
+		return
+	def print_AP2(self):
+		print "Level %r %s: Action Points: %r/%r\n" % (self.plr_lvl, self.plr_name, self.plr_AP, self.plr_maxAP)
+		return
+		
+	def AP_check(self):
+		if self.plr_AP >= power.power_cost:
+			return True
+		else:
+			print "Not Enough Action Points\n"
+			return False
+		
+	def cost_AP(self):
+		self.plr_AP = self.plr_AP - power.power_cost
+		return
 	
 	def xp_check(self, mob_value):
 		
@@ -88,8 +141,9 @@ class Player(object):
 		else:
 			print "XP: %r/%r" % (self.plr_XP, self.plr_maxXP)
 			return
-	
 			
-	"""add get damage function"""
+	def is_class(self, plr_class):
+		if plr_class == self.plr_class:
+			return True
 	
 	
