@@ -1,3 +1,5 @@
+import random
+
 class Mob(object):		
 	"""set up a mobs stats"""
 	def __init__(self):
@@ -42,7 +44,21 @@ class Mob(object):
 			return True
 		else:
 			return False
-	
+			
+	def poison_mob(self):		
+		self.poison = True
+		print "%s has been poisoned" % self.mob_name
+		return
+			
+	"""Item drop"""
+	def get_item_drop(self, plr_lvl):
+		if plr_lvl == 1:
+			item = random.randint(01, 02)
+			return item	
+		elif plr_lvl == 2:
+			item = random.randint(01, 02, 01, 02, 03, 04, 05)
+			return item
+		
 	def make_mob(self, plr_lvl):
 		
 		if plr_lvl == 1:

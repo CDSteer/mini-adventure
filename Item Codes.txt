@@ -1,0 +1,13 @@
+
+Item codes
+
+All level items:
+
+  - 01 HP Potion
+  - 02 AP Potion
+  
+Level 2 items:
+
+  - 03 Short Sword Att +5 (Warrior)
+  - 04 Iron Dagger Att +3 Poison +3 (Warrior, Rouge)
+  - 05 Wooden Staff End +5 (Mage) 

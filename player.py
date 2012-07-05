@@ -1,7 +1,10 @@
 import powers
 from powers import *
+import bag
+from bag import *
 
 power = Power()
+bag = Bag()
 
 class Player(object):
 	"""set up a players stats"""
@@ -145,5 +148,47 @@ class Player(object):
 	def is_class(self, plr_class):
 		if plr_class == self.plr_class:
 			return True
+			
+	"""Functions for using items and the bag"""
+	
+	"""battle bag only displays items that can be used in battle"""
+	def open_battle_bag(self):
+		print "What item do you what to use?"
+		print "1. HP Potion %r" % bag.id_01
+		print "2. AP Potion %r" % bag.id_02
+		print "3. Back"
+		return
+		
+	def use_item(self, selected_item):
+		
+		if selected_item == "1":
+			restore = bag.use_01()
+			if restore == 100:
+				self.plr_HP = self.plr_HP + restore
+				if self.plr_HP > self.plr_maxHP:
+					self.plr_HP = self.plr_maxHP
+					self.print_HP()
+					return
+				else:
+					self.print_HP()
+					return True
+			else:
+				return False
+		elif selected_item == "2":
+			restore = bag.use_02()
+			if restore == 100:
+				self.plr_AP = self.plr_AP + restore
+				if self.plr_AP > self.plr_maxAP:
+					self.plr_AP = self.plr_maxAP
+					self.print_AP2()
+					return True
+				else:
+					self.print_AP2()
+					return True
+			else:
+				return False
+
+			
+	
 	
 	

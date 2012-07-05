@@ -43,12 +43,11 @@ def battle_options():
 		user_attack()
 	elif att_player == "2":
 		if mob.poison_check() == True:
-			#Already poised 
 			battle_options()
-		elif mob.poison_check() == False: 
+		else: 
 			player_power()		
 	elif att_player == "3":
-		print "Coming Soon"
+		bag_options()
 		battle_options()
 	elif att_player == "4":
 		print "You coward!!!"
@@ -70,6 +69,7 @@ def user_attack():
 			mob_attack()
 	else:
 		player.xp_check(mob.mob_expValue)
+		mob.get_item_drop(player.plr_lvl)
 		return
 
 def mob_attack():
@@ -88,8 +88,7 @@ def player_power():
 	else:
 		battle_options()	
 	if player.is_class("Rouge"):
-		mob.poison = True
-		print "%s has been poisoned" % mob.mob_name
+		mob.poison_mob()
 		battle_options()
 	else:
 		dam = player.power_use()
@@ -101,5 +100,29 @@ def player_power():
 			mob_attack()
 		else:
 			player.xp_check(mob.mob_expValue)
+			mob.get_item_drop(player.plr_lvl)
 			return
-		
+			
+def bag_options():
+	player.open_battle_bag()
+	selected_item = raw_input(">")
+	if selected_item != "3":
+		outcome = player.use_item(selected_item)
+		if outcome == True:
+			mob_attack()
+		else:
+			bag_options()
+	else:
+		battle_options()
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
