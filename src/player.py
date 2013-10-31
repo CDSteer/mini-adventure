@@ -187,7 +187,13 @@ class Player(object):
 					return True
 			else:
 				return False
-
+	
+	def add_drop(self, drop):
+		if drop == 1:
+			bag.add_01()
+		elif drop == 2:
+			bag.add_02()
+		return
 			
 	
 	

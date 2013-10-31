@@ -31,4 +31,19 @@ battle.start_battle()
 win = False
 while win == False:	
 	win = battle.battle_options()
+print "You continue on through the dark cave when....."
+battle.start_battle()
+win = False
+while win == False:	
+	win = battle.battle_options()
+print "You continue on through the dark cave when....."
+battle.start_battle()
+win = False
+while win == False:	
+	win = battle.battle_options()
+print "You continue on through the dark cave when....."
+battle.start_battle()
+win = False
+while win == False:	
+	win = battle.battle_options()
 print "Won the tresure. Yay!"

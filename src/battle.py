@@ -69,7 +69,8 @@ def user_attack():
 			mob_attack()
 	else:
 		player.xp_check(mob.mob_expValue)
-		mob.get_item_drop(player.plr_lvl)
+		drop = mob.get_item_drop(player.plr_lvl)
+		player.add_drop(drop)
 		return
 
 def mob_attack():

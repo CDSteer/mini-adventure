@@ -53,10 +53,10 @@ class Mob(object):
 	"""Item drop"""
 	def get_item_drop(self, plr_lvl):
 		if plr_lvl == 1:
-			item = random.randint(01, 02)
+			item = random.randint(1, 2)
 			return item	
 		elif plr_lvl == 2:
-			item = random.randint(01, 02, 01, 02, 03, 04, 05)
+			item = random.randint(1, 2)
 			return item
 		
 	def make_mob(self, plr_lvl):
@@ -80,6 +80,24 @@ class Mob(object):
 			self.mob_def = 5
 			self.mob_endu = 0
 			self.mob_expValue = 60
+			
 		elif plr_lvl == 3:
-			self.Mob(2, "Troll", 60, 30, 10, 0, 50)
+			self.mob_lvl = 2
+			self.mob_name = "Troll"
+			self.mob_maxHP = 100
+			self.mob_HP = 100
+			self.mob_att = 40
+			self.mob_def = 10
+			self.mob_endu = 0
+			self.mob_expValue = 90
+			
+		elif plr_lvl == 4:
+			self.mob_lvl = 2
+			self.mob_name = "Spider"
+			self.mob_maxHP = 50
+			self.mob_HP = 50
+			self.mob_att = 60
+			self.mob_def = 4
+			self.mob_endu = 0
+			self.mob_expValue = 80
 	
